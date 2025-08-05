@@ -1,4 +1,5 @@
 using BlazorServerDemo2.Components;
+using BlazorServerDemo2.Services;
 
 namespace BlazorServerDemo2
 {
@@ -15,10 +16,10 @@ namespace BlazorServerDemo2
             builder.Services.AddHttpClient("CatClient", client =>
             {
                 client.BaseAddress = new Uri("https://api.api-ninjas.com");
-                client.DefaultRequestHeaders.Add("X-Api-Key", "");
+                client.DefaultRequestHeaders.Add("X-Api-Key", "BerNpN0ASoHnAQFRJrZbzOmPzrPnEoltWf22zocf");
             });
 
-
+            builder.Services.AddScoped<ICatService, CatService>();
 
             var app = builder.Build();
 
