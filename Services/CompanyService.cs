@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace BlazorServerDemo2.Services
 {
-    public class CompanyService
+    public class CompanyService : ICompanyService
     {
         private readonly HttpClient _httpClient;
         public CompanyService(IHttpClientFactory httpClientFactory)

@@ -28,6 +28,7 @@ namespace BlazorServerDemo2
             });
 
             builder.Services.AddScoped<ICatService, CatService>();
+            builder.Services.AddScoped<ICompanyService, CompanyService>();
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<MyDbContext>(options =>
