@@ -21,6 +21,12 @@ namespace BlazorServerDemo2
                 client.DefaultRequestHeaders.Add("X-Api-Key", "BerNpN0ASoHnAQFRJrZbzOmPzrPnEoltWf22zocf");
             });
 
+
+            builder.Services.AddHttpClient("CompanyClient", client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:7273");
+            });
+
             builder.Services.AddScoped<ICatService, CatService>();
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

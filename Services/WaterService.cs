@@ -29,7 +29,10 @@ namespace BlazorServerDemo2.Services
             await _db.SaveChangesAsync();
         }
 
-
+        public int GetTodaysIntake()
+        {
+            return _db.Intakes.Where(i => i.Date.Date == DateTime.Now.Date).Sum(x => x.Amount);
+        }
 
     }
 }
