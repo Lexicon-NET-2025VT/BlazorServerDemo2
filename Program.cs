@@ -1,5 +1,7 @@
 using BlazorServerDemo2.Components;
+using BlazorServerDemo2.Data;
 using BlazorServerDemo2.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorServerDemo2
 {
@@ -20,6 +22,13 @@ namespace BlazorServerDemo2
             });
 
             builder.Services.AddScoped<ICatService, CatService>();
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            builder.Services.AddDbContext<MyDbContext>(options =>
+                options.UseSqlServer(connectionString));
+
+            builder.Services.AddScoped<IWaterService, WaterService>();
+
 
             var app = builder.Build();
 
